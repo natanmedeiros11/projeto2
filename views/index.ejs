@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/index.js" defer></script>
+</head>
+<body>
+    <main class="mainPage">
+        <h2>Olá, <%= username %>!</h2>
+        <div class="objectiveDiv">
+            <h4>
+                <% if(objetivo) { %>
+                    Seu objetivo atual: <%= objetivo %>
+                <% } else { %>
+                    Nenhum objetivo selecionado
+                <% } %>
+            </h4>
+            <a href="/updateObjective">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M5 19h1.425L16.2 9.225L14.775 7.8L5 17.575zm-2 2v-4.25L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.438.65T21 6.4q0 .4-.137.763t-.438.662L7.25 21zM19 6.4L17.6 5zm-3.525 2.125l-.7-.725L16.2 9.225z" />
+                </svg>
+                Editar
+            </a>
+        </div>
+
+        <div class="actionButtons">
+            <a href="/add">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M6 12h12m-6 6V6" />
+                </svg>Adicionar um novo habito</a>
+            <input type="search" name="searchHabit" id="searchHabit" placeholder="Procure por um hábito">
+        </div>
+        <div id="categoriesArea">
+            <% if(categorias) { %>
+                <% for (let categoria in categorias) { %>
+                    <input type="checkbox" class="categoryFilterCheckbox" id="<%= categoria %>" style="display: none;">
+                    <label for="<%= categoria %>" class="categoryFilterLabel"><%= categorias[categoria] %></label>
+                <% } %>
+            <% } %>
+        </div>
+        <div id="habitArea">
+            <% if(habitos.length > 0) { %>
+                <% habitos.forEach(habito => { %>
+                    <% if(!habito.completado) { %>
+                        <input type="checkbox" class="habitCheckbox" id="habit<%= habito.id_habito %>">
+                        
+                        <label for="habit<%= habito.id_habito %>" class="habit-container">
+                            <div class="habit">
+                                <div class="checkmark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z" />
+                                    </svg>
+                                </div>
+                                <div class="habit-description"><%= habito.descricao %></div>
+                                <div class="habit-repeat"><%= habito.repeticao_diaria? "Todos os dias": "Hoje" %></div>
+                                <div class="habit-time"><%= habito.horario_limite %></div>
+                                <div class="habit-category"><%= categorias[habito.id_categoria] %></div>
+                                <div class="habit-actions">
+                                    <form action="/editHabit" method="post">
+                                        <input type="hidden" name="habitId" value="<%= habito.id_habito %>">
+                                        <button type="submit" class="edit-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                                <path fill="currentColor" d="M5 19h1.425L16.2 9.225L14.775 7.8L5 17.575zm-2 2v-4.25L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.438.65T21 6.4q0 .4-.137.763t-.438.662L7.25 21zM19 6.4L17.6 5zm-3.525 2.125l-.7-.725L16.2 9.225z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    <button class="delete-btn" id="habit<%= habito.id_habito %>">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                            <path fill="currentColor" d="M7.616 20q-.672 0-1.144-.472T6 18.385V6H5V5h4v-.77h6V5h4v1h-1v12.385q0 .69-.462 1.153T16.384 20zM17 6H7v12.385q0 .269.173.442t.443.173h8.769q.23 0 .423-.192t.192-.424zM9.808 17h1V8h-1zm3.384 0h1V8h-1zM7 6v13z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </label>                                           
+                    <% }  %>
+                <% }) %>
+
+                <% habitos.forEach((habito) => { %>
+                    <% if(habito.completado) { %>
+                    <input type="checkbox" checked class="habitCheckbox" id="habit<%= habito.id_habito %>">
+
+                    <label for="habit<%= habito.id_habito %>" class="habit-container">
+                        <div class="habit">
+                            <div class="checkmark">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z" />
+                                </svg>
+                            </div>
+                            <div class="habit-description"><%= habito.descricao %></div>
+                            <div class="habit-repeat"><%= habito.repeticao_diaria? "Todos os dias": "Hoje" %></div>
+                            <div class="habit-time"><%= habito.horario_limite %></div>
+                            <div class="habit-category"><%= categorias[habito.id_categoria] %></div>
+                            <div class="habit-actions">
+                                <form action="/editHabit" method="post">
+                                    <input type="hidden" name="habitId" value="<%= habito.id_habito %>">
+                                    <button type="submit" class="edit-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                            <path fill="currentColor" d="M5 19h1.425L16.2 9.225L14.775 7.8L5 17.575zm-2 2v-4.25L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.438.65T21 6.4q0 .4-.137.763t-.438.662L7.25 21zM19 6.4L17.6 5zm-3.525 2.125l-.7-.725L16.2 9.225z" />
+                                        </svg>
+                                    </button>
+                                </form>
+                                <button class="delete-btn" id="habit<%= habito.id_habito %>">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M7.616 20q-.672 0-1.144-.472T6 18.385V6H5V5h4v-.77h6V5h4v1h-1v12.385q0 .69-.462 1.153T16.384 20zM17 6H7v12.385q0 .269.173.442t.443.173h8.769q.23 0 .423-.192t.192-.424zM9.808 17h1V8h-1zm3.384 0h1V8h-1zM7 6v13z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </label>
+                    <% } %>
+                <% }) %>
+            <% } else { %> 
+                <p>Você ainda não adicionou nenhum hábito, deseja <a href="/add" style="color: #c92463">adicionar um novo hábito?</a></p>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>

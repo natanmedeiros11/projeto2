@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar-se</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form class="registerForm" action="/register" method="post">
+        <h2>Registrar-se</h2>
+        
+        <label for="nome">Nome</label>
+        <div class="registerInput">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
+                <path fill="currentColor" d="M16 4a5 5 0 1 1-5 5a5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7a7 7 0 0 0-7-7m10 28h-2v-5a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v5H6v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7z" />
+            </svg>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" value="<%= nome || '' %>" autofocus>
+        </div>
+        <% if (erros && erros.nome) { %>
+            <p class="registerInputErrorMessage" id="nome_mensagem"><%= erros.nome %></p>
+        <% } %>
+
+        <label for="email">Email</label>
+        <div class="registerInput">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.6 8.4v4.5a2.7 2.7 0 1 0 5.4 0V12a9 9 0 1 0-3.6 7.2M15.6 12a3.6 3.6 0 1 1-7.2 0a3.6 3.6 0 0 1 7.2 0" color="currentColor" />
+            </svg>
+            <input type="text" id="email" name="email" placeholder="Digite seu email" value="<%= email || '' %>" autocapitalize="off">
+        </div>
+        <% if (erros && erros.email) { %>
+            <p class="registerInputErrorMessage" id="email_mensagem"><%= erros.email %> </p>
+        <% } %>
+        
+        <label for="senha">Senha</label>
+        <div class="registerInput">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 17a2 2 0 0 1-2-2c0-1.11.89-2 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2m6 3V10H6v10zm0-12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10c0-1.11.89-2 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3" />
+            </svg>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+        </div>
+        <% if (erros && erros.senha) { %>
+            <p class="registerInputErrorMessage" id="senha_mensagem"><%= erros.senha %></p>
+        <% } %>
+        
+        <div style="display: flex; align-items:center; flex-direction: column;">
+            <button type="submit" class="registerButton">Registre-se</button>
+            <span class="registerMessage">Já tem uma conta? <a href="/login">Faça o Login</a></span>
+        </div>
+    </form>
+    <script>
+        document.querySelectorAll(".registerInput input").forEach((input, index) => {
+            input.addEventListener("input", () => {
+                let message_item;
+                switch (input.getAttribute("name")){
+                    case "nome":
+                        message_item = document.getElementById("nome_mensagem")
+                        break
+                    case "email":
+                        message_item = document.getElementById("email_mensagem")
+                        break
+                    case "senha":
+                        message_item = document.getElementById("senha_mensagem")
+                        break
+
+                }
+                if(message_item){
+                    message_item.remove()
+                }
+            })
+        })
+    </script>
+</body>
+</html>

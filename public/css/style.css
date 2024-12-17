@@ -1,0 +1,692 @@
+body {
+  width: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d8d8d8;
+  font-family: "Segoe UI";
+  overflow-x: hidden; /* Previne rolagem horizontal */
+  overflow-y: auto; /* Garante rolagem vertical */
+}
+
+.registerForm {
+  background-color: #f1f1f1;
+  border-radius: 30px;
+  padding: 24px;
+  width: 450px;
+}
+
+.registerInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 5px 0 5px;
+  border: 1px solid #c0c0c0;
+  border-radius: 10px;
+  padding: 5px;
+  transition: all 500ms;
+}
+
+.registerInput input {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  margin: 0 5px;
+}
+
+.registerInput:focus-within {
+  border-color: #949494;
+  box-shadow: 0 0 5px #94949480;
+}
+
+.registerInputErrorMessage {
+  margin: 0;
+  color: red;
+  font-size: 12px;
+}
+
+.registerButton {
+  background-color: #131313;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  width: 300px;
+  height: 40px;
+  color: white;
+  margin: 15px 0;
+  font-size: 15px;
+}
+.registerButton:hover {
+  background-color: #000000;
+  cursor: pointer;
+}
+
+.registerMessage {
+  font-size: small;
+  font-weight: 600;
+}
+.registerMessage a {
+  color: #ff2d7e;
+}
+.registerMessage a:hover {
+  color: #c92463;
+}
+
+.chooseObjectiveForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #f1f1f1;
+  max-width: 700px;
+  height: auto;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-y: auto;
+}
+.chooseObjectiveForm h3 {
+  margin: 5px 0;
+}
+.chooseObjectiveForm p {
+  margin: 0 0 0 5px;
+  font-size: 14px;
+}
+
+.chooseObjectiveForm label {
+  display: block;
+  margin-bottom: 15px; /* Espaçamento entre os rótulos */
+  padding: 10px;
+  border: 2px solid transparent; /* Borda inicial transparente */
+  border-radius: 5px; /* Bordas arredondadas */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Transição suave */
+  width: 90%;
+}
+.chooseObjectiveForm label:hover {
+  background-color: #c0c0c0;
+}
+
+.chooseObjectiveForm input[type="radio"]:checked + label {
+  border-color: #c92463; /* Cor da borda quando o rádio for selecionado */
+  background-color: #ffd4e4; /* Cor de fundo suave quando selecionado */
+}
+
+.chooseObjectiveForm input[type="radio"]:checked + label:hover {
+  background-color: #fab3cd;
+}
+
+.objectiveButtonsArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 10px 0;
+  width: 70%;
+}
+
+.objectiveButtonsArea button {
+  color: white;
+  background-color: #c92463;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  transition: color 200ms linear, background-color 200ms linear;
+}
+.objectiveButtonsArea button:hover {
+  background-color: #aa174f;
+}
+
+.objectiveButtonsArea button:disabled {
+  background-color: #ccc; /* Cor de fundo para o botão desabilitado */
+  color: #777; /* Cor do texto */
+  cursor: not-allowed; /* Indica que o botão não pode ser clicado */
+}
+
+.objectiveButtonsArea a {
+  color: #c92463;
+  font-weight: 600;
+  padding: 0 5px;
+  text-decoration: none;
+  border-bottom: 1px solid #c92463;
+  transition: padding 200ms linear, box-shadow 200ms linear,
+    font-weight 200ms linear;
+}
+
+.objectiveButtonsArea a:hover {
+  padding: 0 10px;
+  font-weight: 700;
+  box-shadow: 0 1.5px 0 #c92463;
+}
+
+.errorBox {
+  background-color: #f1f1f1;
+  max-width: 500px;
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorBox h2 {
+  color: #ff1e1e;
+}
+
+.chooseHabitsForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 20px 0;
+  height: auto;
+  overflow: auto; /* Adiciona rolagem quando necessário */
+}
+
+.chooseHabitsForm h2 {
+  margin-bottom: 0;
+}
+.chooseHabitsForm h4 {
+  margin-top: 5px;
+}
+
+.chooseHabitsForm label {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 10px; /* Espaçamento entre os rótulos */
+  padding: 10px;
+  border: 1px solid transparent; /* Borda inicial transparente */
+  border-radius: 5px; /* Bordas arredondadas */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Transição suave */
+  width: 85%;
+}
+
+.chooseHabitsForm .checkmark {
+  display: flex;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #000000;
+  border-radius: 2px;
+  position: relative;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+/* Esconde o svg quando checkbox não está marcado */
+.chooseHabitsForm .checkmark svg {
+  display: none;
+}
+/* Estilo do checkbox personalizado quando o checkbox padrão for marcado */
+.chooseHabitsForm input[type="checkbox"]:checked + label .checkmark {
+  background-color: #c9246356; /* Cor do checkbox quando marcado */
+  border: 2px solid #c92463;
+}
+/* Mostra o SVG do símbolo do checkbox */
+.chooseHabitsForm input[type="checkbox"]:checked + label .checkmark svg {
+  display: block;
+}
+
+/* Estilo do label quando o checkbox é marcado */
+.chooseHabitsForm input[type="checkbox"]:checked + label {
+  border-color: #c92463;
+  background-color: #ffd4e4;
+}
+/* Estilo do label quando o mouse passa por cima quando o checkbox está marcado */
+.chooseHabitsForm input[type="checkbox"]:checked + label:hover {
+  background-color: #fab3cd;
+}
+
+.chooseHabitsForm label:hover {
+  background-color: #c0c0c0;
+  cursor: pointer;
+}
+
+.chooseHabitsButtonArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 15px 0;
+  width: 75%;
+}
+
+.chooseHabitsButtonArea button {
+  color: white;
+  background-color: #c92463;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  transition: color 200ms linear, background-color 200ms linear;
+}
+.chooseHabitsButtonArea button:hover {
+  background-color: #aa174f;
+}
+
+.chooseHabitsButtonArea button:disabled {
+  background-color: #ccc; /* Cor de fundo para o botão desabilitado */
+  color: #777; /* Cor do texto */
+  cursor: not-allowed; /* Indica que o botão não pode ser clicado */
+}
+
+.chooseHabitsButtonArea a {
+  color: #c92463;
+  font-weight: 600;
+  padding: 0 5px;
+  text-decoration: none;
+  border-bottom: 1px solid #c92463;
+  transition: padding 200ms linear, box-shadow 200ms linear,
+    font-weight 200ms linear;
+}
+
+.chooseHabitsButtonArea a:hover {
+  padding: 0 10px;
+  font-weight: 700;
+  box-shadow: 0 1.5px 0 #c92463;
+}
+
+.addHabitForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  background-color: #f1f1f1;
+  width: 500px;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.addHabitForm h2 {
+  margin-top: 5px;
+}
+
+.addHabitForm #descricaoHabito {
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
+  border: 1px solid #c0c0c0;
+  border-radius: 10px;
+  padding: 5px;
+  transition: all 500ms;
+  outline: none;
+}
+.addHabitForm #descricaoHabito:focus {
+  border-color: #949494;
+  box-shadow: 0 0 5px #94949480;
+}
+
+.addHabitForm .categoryDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+}
+
+.addHabitForm select {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fafafa;
+  outline: none;
+  padding: 5px;
+  width: 250px;
+  box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
+}
+
+.addHabitForm #repeticao_diariaLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 250ms linear;
+  box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
+}
+
+.addHabitForm #repeticao_diariaLabel:hover {
+  background-color: #ccc;
+}
+
+.addHabitForm .checkmark {
+  display: flex;
+  width: 11px;
+  height: 11px;
+  border: 2px solid #5f5f5f;
+  border-radius: 2px;
+  position: relative;
+  margin-right: 10px;
+  vertical-align: middle;
+  transition: all 250ms linear;
+}
+
+.addHabitForm #repeticao_diariaLabel svg {
+  display: none;
+}
+
+.addHabitForm input[type="checkbox"]:checked + #repeticao_diariaLabel {
+  /* Estilo do label quando o checkbox é marcado */
+  box-shadow: 0 0 0 2px #c92463;
+  background-color: #ffd4e4;
+}
+
+/* Estilo do checkbox personalizado quando o checkbox padrão for marcado */
+.addHabitForm
+  input[type="checkbox"]:checked
+  + #repeticao_diariaLabel
+  .checkmark {
+  background-color: transparent; /* Cor do checkbox quando marcado */
+  border-color: #c92463;
+}
+
+.addHabitForm input[type="checkbox"]:checked + #repeticao_diariaLabel svg {
+  display: block;
+}
+
+.addHabitForm .limitTimeLabel {
+  padding: 5px;
+  box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
+  font-weight: 600;
+}
+
+.addHabitButtonArea {
+  display: flex;
+  width: 100%;
+  padding: 10px 30px;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.addHabitButtonArea button {
+  background-color: #c92463;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 250ms linear;
+}
+.addHabitButtonArea button:hover {
+  background-color: #aa174f;
+}
+
+.addHabitButtonArea a {
+  color: #c92463;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #c92463;
+  padding: 2px;
+  transition: padding 250ms linear;
+}
+
+.addHabitButtonArea a:hover {
+  padding: 2px 5px;
+}
+
+.mainPage{
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    width: 750px;
+}
+
+.mainPage h2{
+    margin: 5px;
+}
+.mainPage h4{
+    margin: 5px;
+}
+.objectiveDiv{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+#categoriesArea {
+  border-bottom: 1px solid #131313;
+  padding: 5px;
+  padding-bottom: 10px;
+}
+
+.categoryFilterLabel{
+  background-color: #ccc;
+  padding: 5px 10px;
+  font-size: 13px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 200ms linear;
+}
+
+#categoriesArea input[type="checkbox"]:checked + .categoryFilterLabel{
+  background-color: #ffd4e4;
+  border-color: #c92463;
+}
+
+.objectiveDiv a{
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    color:#c92463;
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 1px solid #c92463;
+    transition: padding 250ms linear;
+}
+
+.objectiveDiv a:hover{
+    padding: 0 5px;
+}
+
+.actionButtons{
+    display: flex;
+    flex-direction: column;
+}
+
+.actionButtons a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: white;
+    background-color: #c92463;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.actionButtons input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #c0c0c0;
+    border-radius: 10px;
+    padding: 5px;
+    transition: all 500ms;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    margin: 5px 0px;
+}
+
+.actionButtons input:hover{
+    border-color: #949494;
+    box-shadow: 0 0 5px #94949480;
+}
+
+#habitArea{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+#habitArea input[type="checkbox"]{
+    display: none;
+}
+
+.habit-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    width: 100%;
+    padding: 5px 2px;
+    box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
+}
+  
+.habit {
+    display: grid;
+    grid-template-columns: 0.3fr 2fr 1fr 0.5fr 1.5fr 1fr;
+    width: 100%;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    box-sizing: border-box; /* Garante que o padding seja incluído na largura total */
+    border-radius: 5px;
+    transition: all 150ms linear;
+}
+  
+.habit-description {
+  font-size: 15px;
+  gap: 2px;
+}
+
+.habit-repeat{
+    text-align: start;
+    font-size: 12px;
+}
+
+.habit-time{
+    text-align: center;
+    font-size: 14px;
+}
+
+.habit-category {
+  text-align: end;
+}
+
+.habit-actions {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 13px;
+  gap: 10px;
+  height: 90%;
+}
+
+.habit-container button {
+  background-color: #1f1f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 200ms linear
+}
+
+.habit-container button:hover {
+  background-color: #131313;
+  color: #fff;
+}
+
+.habit-container a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1f1f;
+  color: white;
+  padding: 2px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.habit-container a:hover{
+  background-color: #131313;
+}
+
+.habit-container .checkmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #000000;
+  border-radius: 2px;
+  position: relative;
+  margin-right: 5px;
+  vertical-align: middle;
+  color: #ffffff;
+  gap: 3px;
+}
+
+#habitArea .checkmark svg{
+  display: none;
+}
+
+#habitArea input[type="checkbox"]:checked + label .habit{
+  background-color: #0d9c002f;
+}
+
+#habitArea input[type="checkbox"]:checked + label .checkmark svg {
+  display: block;
+}
+
+#habitArea input[type="checkbox"]:checked + label .checkmark{
+  border-color: #0d9c0000;
+  background-color: #0d9c00 ;
+}
+
+@media (max-width: 640px) {
+  .chooseObjectiveForm {
+    width: 100%;
+    min-height: 100dvh;
+    border-radius: 0;
+  }
+  .chooseHabitsForm {
+    width: 100%;
+    min-height: 100dvh;
+    border-radius: 0;
+    margin: 0;
+  }
+  .addHabitForm {
+    width: 100%;
+    min-height: 100dvh;
+    justify-content: start;
+  }
+  .addHabitForm .categoryDiv {
+    height: fit-content;
+    margin-bottom: 10px;
+  }
+  .categoryDiv select {
+    width: 47%;
+  }
+  .categoryDiv #repeticao_diariaLabel {
+    width: 47%;
+    padding: 3px;
+  }
+  .addHabitButtonArea {
+    align-items: end;
+    padding: 10px;
+  }
+  .addHabitButtonArea button {
+    width: 100px;
+    height: 100%;
+    padding: 10px;
+  }
+}
